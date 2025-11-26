@@ -1,0 +1,2 @@
+[console_scripts]
+injekt = injekt.cli.app:main

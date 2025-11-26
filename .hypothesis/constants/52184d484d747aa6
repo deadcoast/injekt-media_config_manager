@@ -1,0 +1,4 @@
+# file: C:\Users\ryanf\github\00\video-configs-5000\injekt\core\constants.py
+# hypothesis_version: 6.148.2
+
+[100, '.injekt', 'AppData', 'C:/Program Files/mpv', 'Roaming', 'assets', 'backups', 'logs', 'mpv', 'state.json', 'vlc']

@@ -1,27 +1,37 @@
 # Implementation Plan: Injekt CLI
 
-- [ ] 1. Set up project structure and core infrastructure
+- [x] 1. Set up project structure and core infrastructure
+
+
+
+
+
   - Create directory structure (core/, io/, business/, cli/)
   - Set up Python package with pyproject.toml
   - Install dependencies (typer, rich, hypothesis for testing)
   - Create __init__.py files for all modules
   - _Requirements: All requirements (foundation)_
 
-- [ ] 1.1 Implement core types and constants
+- [x] 1.1 Implement core types and constants
+
+
   - Create Result types (Success, Failure) in core/result.py
   - Create error hierarchy in core/errors.py
   - Define constants (exit codes, paths, limits) in core/constants.py
   - Create enums (PlayerType, ProfileType, FileType) in core/models.py
   - _Requirements: 2.1, 3.1, 4.1_
 
-- [ ] 1.2 Implement domain models
+- [x] 1.2 Implement domain models
+
   - Create PackageFile dataclass
   - Create Package dataclass with methods
   - Create InstallationState dataclass
   - Create Backup dataclass
   - _Requirements: 2.1, 5.1, 6.1_
 
-- [ ] 1.3 Define core interfaces
+- [x] 1.3 Define core interfaces
+
+
   - Create PackageRepository protocol
   - Create PathResolver protocol
   - Create ConfigValidator protocol
@@ -30,24 +40,32 @@
   - _Requirements: 2.1, 3.1, 4.1, 5.1_
 
 - [ ] 2. Implement I/O layer
+
+
   - Create file operations module
   - Create path resolver module
   - Create config parser module
   - Create backup storage module
   - _Requirements: 2.2, 2.3, 3.1, 5.1_
 
-- [ ] 2.1 Implement file operations
+- [x] 2.1 Implement file operations
+
+
   - Create FileOperations class with copy, move, delete methods
   - Implement directory creation with permissions
   - Implement file existence and permission checks
   - Add error handling for I/O failures
   - _Requirements: 2.3, 10.2_
 
-- [ ] 2.2 Write property test for file operations
+- [x] 2.2 Write property test for file operations
+
+
   - **Property 13: Dry-run immutability**
   - **Validates: Requirements 14.4**
 
-- [ ] 2.3 Implement path resolver
+- [x] 2.3 Implement path resolver
+
+
   - Create PathResolver class
   - Implement detect_player_directory for MPV
   - Implement detect_player_directory for VLC
@@ -55,11 +73,14 @@
   - Implement environment variable expansion
   - _Requirements: 3.1, 3.2, 23.1, 23.2_
 
-- [ ] 2.4 Write property test for path normalization
+- [x] 2.4 Write property test for path normalization
+
+
   - **Property 17: Path normalization**
   - **Validates: Requirements 23.1, 23.2**
 
-- [ ] 2.5 Implement config parser
+- [-] 2.5 Implement config parser
+
   - Create ConfigParser class
   - Implement JSON manifest parsing
   - Implement package manifest validation

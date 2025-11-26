@@ -1,0 +1,58 @@
+Metadata-Version: 2.4
+Name: injekt-cli
+Version: 0.1.0
+Summary: A CLI tool for managing video media player configurations
+Author: Injekt Contributors
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: typer>=0.9.0
+Requires-Dist: rich>=13.0.0
+Provides-Extra: test
+Requires-Dist: hypothesis>=6.0.0; extra == "test"
+Requires-Dist: pytest>=7.0.0; extra == "test"
+
+# Injekt CLI - Video Media Config Manager
+
+A command-line interface application for managing and installing video media player configurations.
+
+## Installation
+
+```bash
+pip install -e .
+```
+
+For development with testing dependencies:
+
+```bash
+pip install -e ".[test]"
+```
+
+## Usage
+
+```bash
+injekt --help
+```
+
+## Development
+
+This project uses:
+- **typer** for CLI framework
+- **rich** for beautiful terminal output
+- **hypothesis** for property-based testing
+- **pytest** for unit testing
+
+## Project Structure
+
+```
+injekt/
+├── core/          # Core domain models, types, and interfaces
+├── io/            # I/O layer for file operations
+├── business/      # Business logic layer
+└── cli/           # CLI layer for commands
+```
