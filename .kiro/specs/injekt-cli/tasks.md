@@ -195,14 +195,21 @@
 
 
 
-- [ ] 4.4 Write property test for rollback round-trip
+- [x] 4.4 Write property test for rollback round-trip
+
+
+
+
+
   - **Property 6: Rollback round-trip**
 
 
 
   - **Validates: Requirements 6.2**
 
-- [ ] 4.5 Implement installer
+- [-] 4.5 Implement installer
+
+
   - Create Installer class
   - Implement install_package with validation
   - Implement file conflict detection
