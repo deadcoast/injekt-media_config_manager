@@ -39,7 +39,9 @@
   - Create Installer protocol
   - _Requirements: 2.1, 3.1, 4.1, 5.1_
 
-- [ ] 2. Implement I/O layer
+- [x] 2. Implement I/O layer
+
+
 
 
   - Create file operations module
@@ -79,7 +81,8 @@
   - **Property 17: Path normalization**
   - **Validates: Requirements 23.1, 23.2**
 
-- [-] 2.5 Implement config parser
+- [x] 2.5 Implement config parser
+
 
   - Create ConfigParser class
   - Implement JSON manifest parsing
@@ -88,11 +91,15 @@
   - Implement backup metadata parsing
   - _Requirements: 1.1, 2.1, 5.1_
 
-- [ ] 2.6 Write property test for manifest parsing
+- [x] 2.6 Write property test for manifest parsing
+
+
   - **Property 1: Package listing completeness**
   - **Validates: Requirements 1.1, 1.2, 1.4**
 
-- [ ] 2.7 Implement backup storage
+- [x] 2.7 Implement backup storage
+
+
   - Create BackupStorage class
   - Implement backup directory creation with timestamps
   - Implement backup metadata persistence
@@ -100,40 +107,55 @@
   - Implement old backup cleanup
   - _Requirements: 5.1, 5.2, 5.5, 6.1_
 
-- [ ] 2.8 Write property test for backup rotation
+- [x] 2.8 Write property test for backup rotation
+
+
   - **Property 5: Backup rotation**
   - **Validates: Requirements 5.5**
 
-- [ ] 3. Implement validation layer
+- [x] 3. Implement validation layer
+
+
+
+
+
   - Create configuration validators
   - Create plugin validators
   - Create shader validators
   - _Requirements: 4.1, 4.2, 4.3, 4.4_
 
-- [ ] 3.1 Implement config validator
+- [x] 3.1 Implement config validator
+
+
   - Create ConfigValidator class
   - Implement MPV config syntax validation
   - Implement VLC config syntax validation
   - Implement validation error reporting with line numbers
   - _Requirements: 4.1, 4.4_
 
-- [ ] 3.2 Write property test for validation error reporting
+- [x] 3.2 Write property test for validation error reporting
+
+
   - **Property 19: Validation error reporting**
   - **Validates: Requirements 4.4**
 
-- [ ] 3.3 Implement plugin validator
+- [x] 3.3 Implement plugin validator
+
   - Implement Lua plugin validation
   - Implement JavaScript plugin validation
   - Implement dependency checking
   - _Requirements: 4.2_
 
-- [ ] 3.4 Implement shader validator
+- [x] 3.4 Implement shader validator
+
   - Implement GLSL shader file validation
   - Implement shader extension checking
   - Implement basic syntax validation
   - _Requirements: 4.3_
 
-- [ ] 3.5 Write property test for validation before installation
+- [x] 3.5 Write property test for validation before installation
+
+
   - **Property 4: Validation before installation**
   - **Validates: Requirements 4.1, 4.2, 4.3, 4.5**
 

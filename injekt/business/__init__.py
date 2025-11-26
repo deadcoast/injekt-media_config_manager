@@ -1,1 +1,5 @@
-"""Business logic layer for package management and installation."""
+"""Business logic layer for Injekt CLI."""
+
+from .validator import ConfigValidatorImpl
+
+__all__ = ['ConfigValidatorImpl']

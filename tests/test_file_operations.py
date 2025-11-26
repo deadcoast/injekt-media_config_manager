@@ -28,7 +28,7 @@ def get_directory_state(directory: Path) -> set:
     filename=st.text(min_size=1, max_size=50, alphabet=st.characters(
         whitelist_categories=('Lu', 'Ll', 'Nd'),
         whitelist_characters='_-.'
-    )),
+    )).filter(lambda x: x not in ('.', '..')),
     content=st.binary(min_size=0, max_size=1000)
 )
 @settings(max_examples=100)
@@ -69,7 +69,7 @@ def test_dry_run_copy_immutability(filename, content):
     filename=st.text(min_size=1, max_size=50, alphabet=st.characters(
         whitelist_categories=('Lu', 'Ll', 'Nd'),
         whitelist_characters='_-.'
-    )),
+    )).filter(lambda x: x not in ('.', '..')),
     content=st.binary(min_size=0, max_size=1000)
 )
 @settings(max_examples=100)
@@ -110,7 +110,7 @@ def test_dry_run_move_immutability(filename, content):
     filename=st.text(min_size=1, max_size=50, alphabet=st.characters(
         whitelist_categories=('Lu', 'Ll', 'Nd'),
         whitelist_characters='_-.'
-    )),
+    )).filter(lambda x: x not in ('.', '..')),
     content=st.binary(min_size=0, max_size=1000)
 )
 @settings(max_examples=100)
