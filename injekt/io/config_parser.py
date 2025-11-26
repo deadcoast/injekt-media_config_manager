@@ -218,7 +218,8 @@ class ConfigParser:
                 timestamp=datetime.fromisoformat(data['timestamp']),
                 package_name=data['package_name'],
                 backup_dir=Path(data['backup_dir']),
-                files=[Path(f) for f in data['files']]
+                files=[Path(f) for f in data['files']],
+                target_dir=Path(data['target_dir']) if 'target_dir' in data else None
             )
             
             return Success(backup)
@@ -247,7 +248,8 @@ class ConfigParser:
                 'timestamp': backup.timestamp.isoformat(),
                 'package_name': backup.package_name,
                 'backup_dir': str(backup.backup_dir),
-                'files': [str(f) for f in backup.files]
+                'files': [str(f) for f in backup.files],
+                'target_dir': str(backup.target_dir) if backup.target_dir else None
             }
             
             with open(metadata_path, 'w', encoding='utf-8') as f:

@@ -27,7 +27,8 @@ class BackupStorage:
         self,
         package_name: str,
         source_files: List[Path],
-        source_dir: Path
+        source_dir: Path,
+        target_dir: Optional[Path] = None
     ) -> Result[Backup]:
         """Create a backup of files.
         
@@ -35,6 +36,7 @@ class BackupStorage:
             package_name: Name of the package being backed up
             source_files: List of files to backup
             source_dir: Base directory containing the files
+            target_dir: Optional target directory for restoration
             
         Returns:
             Result containing Backup object
@@ -75,7 +77,8 @@ class BackupStorage:
                 timestamp=timestamp,
                 package_name=package_name,
                 backup_dir=backup_dir,
-                files=backed_up_files
+                files=backed_up_files,
+                target_dir=target_dir or source_dir
             )
             
             # Write metadata

@@ -278,3 +278,29 @@ class ConfigValidatorImpl(ConfigValidator):
             return Failure(ValidationError(error_msg))
         
         return Success(None)
+
+    
+    def validate_file_by_type(self, path: Path, file_type, player: PlayerType) -> Result[None]:
+        """Validate a file based on its type.
+        
+        Args:
+            path: Path to the file
+            file_type: FileType enum value
+            player: PlayerType enum value
+            
+        Returns:
+            Result indicating success or validation error
+        """
+        from injekt.core.models import FileType
+        
+        if file_type == FileType.CONFIG:
+            return self.validate_config_file(path, player)
+        elif file_type in (FileType.PLUGIN_LUA, FileType.PLUGIN_JS):
+            return self.validate_plugin(path)
+        elif file_type == FileType.SHADER:
+            return self.validate_shader(path)
+        elif file_type == FileType.SCRIPT_OPT:
+            # Script options are just config files
+            return self.validate_config_file(path, player)
+        else:
+            return Success(None)

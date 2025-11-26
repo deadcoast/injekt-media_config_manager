@@ -73,3 +73,4 @@ class Backup:
     package_name: str
     backup_dir: Path
     files: List[Path]
+    target_dir: Optional[Path] = None  # Directory where files should be restored

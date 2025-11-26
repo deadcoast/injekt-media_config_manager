@@ -159,21 +159,27 @@
   - **Property 4: Validation before installation**
   - **Validates: Requirements 4.1, 4.2, 4.3, 4.5**
 
-- [ ] 4. Implement business logic layer
+- [-] 4. Implement business logic layer
+
+
   - Create package manager
   - Create installer
   - Create backup manager
   - Create profile manager
   - _Requirements: 2.1, 5.1, 9.1_
 
-- [ ] 4.1 Implement package repository
+- [x] 4.1 Implement package repository
+
+
   - Create PackageRepository class
   - Implement list_packages from assets directory
   - Implement get_package by name
   - Implement get_installed_packages from state file
   - _Requirements: 1.1, 2.1_
 
-- [ ] 4.2 Implement backup manager
+- [x] 4.2 Implement backup manager
+
+
   - Create BackupManager class
   - Implement create_backup with file copying
   - Implement list_backups from backup directory
@@ -181,12 +187,19 @@
   - Implement cleanup_old_backups keeping 5 most recent
   - _Requirements: 5.1, 5.2, 5.5, 6.1, 6.2_
 
-- [ ] 4.3 Write property test for backup creation
+- [x] 4.3 Write property test for backup creation
+
+
   - **Property 2: Installation creates backup**
   - **Validates: Requirements 2.4, 5.1, 5.2**
 
+
+
 - [ ] 4.4 Write property test for rollback round-trip
   - **Property 6: Rollback round-trip**
+
+
+
   - **Validates: Requirements 6.2**
 
 - [ ] 4.5 Implement installer
