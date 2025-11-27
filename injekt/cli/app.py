@@ -65,38 +65,66 @@ def main_callback(
         False,
         "--verbose",
         "-v",
-        help="Enable verbose output"
+        help="Enable verbose output with detailed logging"
     ),
     dry_run: bool = typer.Option(
         False,
         "--dry-run",
         "-n",
-        help="Simulate operations without making changes"
+        help="Simulate operations without making any changes to disk"
     ),
     output_format: str = typer.Option(
         "text",
         "--format",
         "-f",
-        help="Output format (text, json, table)"
+        help="Output format: text (default), json, or table"
     ),
     player: Optional[str] = typer.Option(
         None,
         "--player",
         "-p",
-        help="Target player (mpv, vlc)"
+        help="Target player: mpv or vlc (auto-detected if not specified)"
     ),
     version: bool = typer.Option(
         False,
         "--version",
         callback=version_callback,
         is_eager=True,
-        help="Show version and exit"
+        help="Show version information and exit"
     )
 ):
     """
     Injekt CLI - Video Media Player Configuration Manager
     
     Manage and install optimized configurations for MPV and VLC media players.
+    Automates deployment of configuration files, plugins, and shaders with
+    backup and rollback capabilities.
+    
+    Global Options:
+        --verbose, -v     Show detailed output and logging
+        --dry-run, -n     Preview changes without modifying files
+        --format, -f      Choose output format (text, json, table)
+        --player, -p      Specify target player (mpv, vlc)
+        --version         Display version information
+    
+    Quick Start:
+        1. List available packages:    injekt list
+        2. View package details:       injekt info <package-name>
+        3. Install a package:          injekt install <package-name>
+        4. Verify installation:        injekt verify <package-name>
+    
+    For interactive guided setup:
+        injekt interactive
+    
+    For help on a specific command:
+        injekt <command> --help
+    
+    Examples:
+        injekt list
+        injekt install mpv-ultra-5090
+        injekt verify mpv-ultra-5090
+        injekt rollback
+        injekt report --format json
     """
     state.verbose = verbose
     state.dry_run = dry_run
@@ -168,7 +196,22 @@ def get_dependencies():
 
 @app.command()
 def list():
-    """List all available configuration packages."""
+    """
+    List all available configuration packages.
+    
+    Displays all packages in the assets directory with their name, description,
+    target player, version, and installation status.
+    
+    Examples:
+        injekt list
+        injekt list --format json
+        injekt list -v
+    
+    Common use cases:
+        - Browse available configurations before installation
+        - Check which packages are already installed
+        - View package versions and compatibility
+    """
     deps = get_dependencies()
     
     command = ListCommand(
@@ -184,7 +227,31 @@ def list():
 def install(
     package_name: str = typer.Argument(..., help="Name of the package to install")
 ):
-    """Install a configuration package."""
+    """
+    Install a configuration package.
+    
+    Installs the specified package to the detected player directory. Creates
+    a backup of existing configurations before installation. Validates all
+    files before copying.
+    
+    Examples:
+        injekt install mpv-ultra-5090
+        injekt install vlc-config --dry-run
+        injekt install mpv-ultra-5090 -v
+    
+    Common use cases:
+        - Install optimized configurations for your media player
+        - Preview installation with --dry-run before committing
+        - Upgrade to a new configuration profile
+    
+    The command will:
+        1. Validate the package exists
+        2. Detect or prompt for the target directory
+        3. Create a backup of existing configs
+        4. Validate all configuration files
+        5. Copy files to the target directory
+        6. Display installation summary
+    """
     deps = get_dependencies()
     
     command = InstallCommand(
@@ -204,7 +271,27 @@ def install(
 def verify(
     package_name: str = typer.Argument(..., help="Name of the package to verify")
 ):
-    """Verify package installation."""
+    """
+    Verify package installation.
+    
+    Checks that all required files exist, have correct permissions, and
+    validates configuration file syntax.
+    
+    Examples:
+        injekt verify mpv-ultra-5090
+        injekt verify vlc-config -v
+    
+    Common use cases:
+        - Troubleshoot installation issues
+        - Confirm package integrity after manual changes
+        - Validate configuration after system updates
+    
+    The command checks:
+        - All required files exist in target directories
+        - File permissions are correct
+        - Configuration file syntax is valid
+        - Plugin dependencies are satisfied
+    """
     deps = get_dependencies()
     
     command = VerifyCommand(
@@ -219,7 +306,28 @@ def verify(
 
 @app.command()
 def rollback():
-    """Rollback to a previous configuration."""
+    """
+    Rollback to a previous configuration.
+    
+    Lists available backups and restores the selected one. Creates a backup
+    of the current state before rollback for safety.
+    
+    Examples:
+        injekt rollback
+        injekt rollback -v
+    
+    Common use cases:
+        - Undo a problematic installation
+        - Restore previous working configuration
+        - Recover from configuration errors
+    
+    The command will:
+        1. List all available backups with timestamps
+        2. Prompt you to select a backup
+        3. Create a backup of current state
+        4. Restore files from the selected backup
+        5. Display restored files
+    """
     deps = get_dependencies()
     
     command = RollbackCommand(
@@ -236,7 +344,29 @@ def rollback():
 def uninstall(
     package_name: str = typer.Argument(..., help="Name of the package to uninstall")
 ):
-    """Uninstall a configuration package."""
+    """
+    Uninstall a configuration package.
+    
+    Removes all files installed by the package. Creates a backup before
+    uninstallation. Preserves user-created files not part of the package.
+    
+    Examples:
+        injekt uninstall mpv-ultra-5090
+        injekt uninstall vlc-config --dry-run
+        injekt uninstall mpv-ultra-5090 -y
+    
+    Common use cases:
+        - Remove unwanted configurations
+        - Clean up before installing a different package
+        - Return to default player settings
+    
+    The command will:
+        1. Confirm uninstallation (unless -y flag is used)
+        2. Create a backup of current state
+        3. Remove all package files
+        4. Clean up empty directories
+        5. Display removed files
+    """
     deps = get_dependencies()
     
     command = UninstallCommand(
@@ -254,7 +384,30 @@ def uninstall(
 def info(
     package_name: str = typer.Argument(..., help="Name of the package to show info for")
 ):
-    """Display detailed package information."""
+    """
+    Display detailed package information.
+    
+    Shows comprehensive details about a package including description,
+    target player, version, profile, dependencies, and all included files.
+    
+    Examples:
+        injekt info mpv-ultra-5090
+        injekt info vlc-config
+        injekt info mpv-ultra-5090 --format json
+    
+    Common use cases:
+        - Review package contents before installation
+        - Check package compatibility and requirements
+        - Understand what files will be installed
+        - View package dependencies
+    
+    Displays:
+        - Package name and description
+        - Target player and version
+        - Configuration profile type
+        - Dependencies (if any)
+        - Complete file list with types
+    """
     deps = get_dependencies()
     
     command = InfoCommand(
@@ -268,7 +421,31 @@ def info(
 
 @app.command()
 def report():
-    """Generate a configuration report."""
+    """
+    Generate a configuration report.
+    
+    Creates a comprehensive report of your current configuration including
+    all installed packages, plugins, shaders, and active profile.
+    
+    Examples:
+        injekt report
+        injekt report --format json
+        injekt report -f json > config-report.json
+    
+    Common use cases:
+        - Document your current setup
+        - Share configuration details for troubleshooting
+        - Track installed packages and versions
+        - Export configuration inventory
+    
+    The report includes:
+        - All installed packages with versions
+        - Active configuration files
+        - Installed plugins (Lua and JavaScript)
+        - Installed shaders
+        - Current active profile
+        - Summary statistics
+    """
     deps = get_dependencies()
     
     command = ReportCommand(
@@ -284,7 +461,31 @@ def report():
 def update(
     package_name: str = typer.Argument(..., help="Name of the package to update")
 ):
-    """Update an installed package."""
+    """
+    Update an installed package.
+    
+    Compares installed version with available version and updates if newer
+    version is available. Creates backup before updating and preserves
+    user customizations.
+    
+    Examples:
+        injekt update mpv-ultra-5090
+        injekt update vlc-config --dry-run
+        injekt update mpv-ultra-5090 -v
+    
+    Common use cases:
+        - Get latest optimizations and bug fixes
+        - Upgrade to new configuration versions
+        - Preview updates with --dry-run
+    
+    The command will:
+        1. Check for available updates
+        2. Display version changes
+        3. Confirm update with user
+        4. Create backup of current configuration
+        5. Install updated package
+        6. Preserve user customizations where possible
+    """
     deps = get_dependencies()
     
     command = UpdateCommand(
@@ -306,7 +507,30 @@ def export(
         help="Directory to export configuration to"
     )
 ):
-    """Export current configuration."""
+    """
+    Export current configuration.
+    
+    Copies all active configuration files, plugins, and shaders to an
+    export directory. Creates a manifest file for easy re-import.
+    
+    Examples:
+        injekt export ./my-config-backup
+        injekt export ~/Desktop/mpv-export
+        injekt export
+    
+    Common use cases:
+        - Backup your configuration
+        - Share your setup with others
+        - Transfer configuration to another machine
+        - Create a portable configuration package
+    
+    The export includes:
+        - All active configuration files
+        - Installed plugins (Lua and JavaScript)
+        - Installed shaders
+        - Package manifest for re-import
+        - Optional zip compression
+    """
     deps = get_dependencies()
     
     command = ExportCommand(
@@ -323,7 +547,30 @@ def export(
 def import_config(
     input_dir: Path = typer.Argument(..., help="Directory containing configuration to import")
 ):
-    """Import a configuration package."""
+    """
+    Import a configuration package.
+    
+    Validates and imports a configuration from a directory. Creates a new
+    package entry that can be installed like any other package.
+    
+    Examples:
+        injekt import ./my-custom-config
+        injekt import ~/Downloads/shared-mpv-config
+        injekt import ./exported-config -v
+    
+    Common use cases:
+        - Import configurations from others
+        - Restore exported configurations
+        - Add custom configuration packages
+        - Migrate configurations from another machine
+    
+    The command will:
+        1. Validate directory structure
+        2. Check for required manifest file
+        3. Prompt for package name and description
+        4. Create new package entry
+        5. Make package available for installation
+    """
     deps = get_dependencies()
     
     command = ImportCommand(
@@ -343,7 +590,27 @@ app.add_typer(profile_app, name="profile")
 
 @profile_app.command("list")
 def profile_list():
-    """List available configuration profiles."""
+    """
+    List available configuration profiles.
+    
+    Displays all available profiles (performance, quality, cinematic, etc.)
+    and indicates which profile is currently active.
+    
+    Examples:
+        injekt profile list
+        injekt profile list -v
+    
+    Common use cases:
+        - Browse available profiles
+        - Check which profile is active
+        - Discover optimization options
+    
+    Profiles typically include:
+        - performance: Optimized for speed and low latency
+        - quality: Optimized for maximum visual quality
+        - cinematic: Optimized for movie watching
+        - default: Balanced general-purpose settings
+    """
     deps = get_dependencies()
     
     command = ProfileListCommand(
@@ -359,7 +626,28 @@ def profile_list():
 def profile_switch(
     profile_name: str = typer.Argument(..., help="Name of the profile to switch to")
 ):
-    """Switch to a different configuration profile."""
+    """
+    Switch to a different configuration profile.
+    
+    Changes the active configuration profile. Creates a backup of the
+    current configuration before switching.
+    
+    Examples:
+        injekt profile switch performance
+        injekt profile switch quality
+        injekt profile switch cinematic -v
+    
+    Common use cases:
+        - Switch between performance and quality modes
+        - Optimize for different content types
+        - Test different configuration profiles
+    
+    The command will:
+        1. Confirm profile switch
+        2. Create backup of current configuration
+        3. Apply new profile settings
+        4. Display success message
+    """
     deps = get_dependencies()
     
     command = ProfileSwitchCommand(
@@ -374,7 +662,29 @@ def profile_switch(
 
 @app.command()
 def interactive():
-    """Start interactive mode with step-by-step wizards."""
+    """
+    Start interactive mode with step-by-step wizards.
+    
+    Launches an interactive menu system that guides you through all
+    available operations with prompts and validation.
+    
+    Examples:
+        injekt interactive
+        injekt interactive -v
+    
+    Common use cases:
+        - First-time setup and configuration
+        - Guided installation process
+        - Explore features without memorizing commands
+        - Step-by-step troubleshooting
+    
+    Interactive mode provides:
+        - Menu-driven interface
+        - Input validation and helpful prompts
+        - Confirmation before destructive operations
+        - Contextual help and suggestions
+        - Easy navigation between operations
+    """
     deps = get_dependencies()
     
     # Create all command instances
