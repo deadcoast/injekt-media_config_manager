@@ -16,6 +16,7 @@ from injekt.cli.commands import (
     ExportCommand,
     ImportCommand
 )
+from injekt.cli.app import main
 
 __all__ = [
     "OutputFormatter",
@@ -31,5 +32,6 @@ __all__ = [
     "ProfileSwitchCommand",
     "UpdateCommand",
     "ExportCommand",
-    "ImportCommand"
+    "ImportCommand",
+    "main"
 ]

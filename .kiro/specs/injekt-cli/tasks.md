@@ -489,34 +489,46 @@
   - **Property 16: Export-import round-trip**
   - **Validates: Requirements 18.1, 18.2**
 
-- [ ] 8. Implement CLI application
+- [x] 8. Implement CLI application
+
+
+
+
   - Create main Typer app
   - Wire up all commands
   - Add global options
   - Implement version callback
   - _Requirements: All requirements_
 
-- [ ] 8.1 Create Typer application
+- [x] 8.1 Create Typer application
+
+
   - Create app.py with Typer app
   - Add version callback
   - Add global options (verbose, dry-run, format, player)
   - Configure dependency injection for commands
   - _Requirements: 14.1, 14.2, 14.3, 14.4_
 
-- [ ] 8.2 Wire up list command
+- [x] 8.2 Wire up list command
+
+
   - Add list command to Typer app
   - Inject dependencies (PackageRepository, OutputFormatter)
   - Handle errors and display results
   - _Requirements: 1.1_
 
-- [ ] 8.3 Wire up install command
+- [x] 8.3 Wire up install command
+
+
   - Add install command to Typer app
   - Inject dependencies (Installer, PathResolver, BackupManager, etc.)
   - Support dry-run mode
   - Handle errors and display results
   - _Requirements: 2.1_
 
-- [ ] 8.4 Wire up remaining commands
+- [x] 8.4 Wire up remaining commands
+
+
   - Add verify, rollback, uninstall, info commands
   - Add profile list and profile switch commands
   - Add report, update, export, import commands
