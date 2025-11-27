@@ -1,0 +1,16 @@
+{
+    "name": "vlc-config",
+    "description": "Optimized VLC configuration for high-end hardware with Direct3D11 and Lanczos scaling",
+    "player": "vlc",
+    "version": "1.0.0",
+    "profile": "quality",
+    "dependencies": [],
+    "files": [
+        {
+            "source": "configs/vlcrc",
+            "target": "vlcrc",
+            "type": "config",
+            "required": true
+        }
+    ]
+}

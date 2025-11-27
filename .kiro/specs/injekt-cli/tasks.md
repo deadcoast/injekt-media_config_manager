@@ -588,20 +588,29 @@
   - Log errors with stack traces
   - _Requirements: 3.4, 25.4_
 
-- [ ] 11. Create sample package manifests
+- [x] 11. Create sample package manifests
+
+
+
+
+
   - Create MPV ultra config package manifest
   - Create VLC config package manifest
   - Create plugin packages
   - _Requirements: 1.1, 2.1_
 
-- [ ] 11.1 Create MPV ultra package
+- [x] 11.1 Create MPV ultra package
+
+
   - Create manifest.json for mpv-ultra-5090
   - Reference existing config files in docs/mpv-config/
   - Reference existing plugins in assets/mpv/plugins/
   - Define file mappings and types
   - _Requirements: 1.1, 2.1_
 
-- [ ] 11.2 Create VLC package
+- [x] 11.2 Create VLC package
+
+
   - Create manifest.json for vlc-config
   - Reference existing config in docs/vlc-config/
   - Define file mappings

@@ -1,0 +1,4 @@
+# file: C:\Users\ryanf\github\00\video-configs-5000\injekt\core\logging.py
+# hypothesis_version: 6.148.2
+
+[1024, 'ContextAdapter', 'context', 'error_message', 'error_type', 'extra', 'injekt', 'injekt.log', 'operation', 'utf-8']

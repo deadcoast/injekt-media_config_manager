@@ -1,0 +1,34 @@
+{
+    "name": "mpv-ultra-5090",
+    "description": "Optimized MPV configuration for RTX 5090 + QD-OLED + 1440p + 360Hz",
+    "player": "mpv",
+    "version": "0.0.2",
+    "profile": "quality",
+    "dependencies": [],
+    "files": [
+        {
+            "source": "configs/mpv.conf",
+            "target": "mpv.conf",
+            "type": "config",
+            "required": true
+        },
+        {
+            "source": "configs/input.conf",
+            "target": "input.conf",
+            "type": "config",
+            "required": true
+        },
+        {
+            "source": "plugins/lua/auto-load.lua",
+            "target": "scripts/autoload.lua",
+            "type": "plugin_lua",
+            "required": false
+        },
+        {
+            "source": "plugins/js/auto-load-fonts.js",
+            "target": "scripts/auto-load-fonts.js",
+            "type": "plugin_js",
+            "required": false
+        }
+    ]
+}
