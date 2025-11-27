@@ -535,12 +535,18 @@
   - Inject appropriate dependencies for each
   - _Requirements: All requirements_
 
-- [ ] 9. Implement configuration management
+- [x] 9. Implement configuration management
+
+
+
+
   - Create application config
   - Implement config loading from file and environment
   - _Requirements: 7.1, 7.2, 7.3_
 
-- [ ] 9.1 Create application configuration
+- [x] 9.1 Create application configuration
+
+
   - Create InjektConfig dataclass
   - Implement from_file class method
   - Implement from_env class method
@@ -548,7 +554,9 @@
   - Implement config merging
   - _Requirements: 7.1, 7.2, 7.3, 24.1, 24.2_
 
-- [ ] 9.2 Write property test for config merge precedence
+- [x] 9.2 Write property test for config merge precedence
+
+
   - **Property 18: Config merge precedence**
   - **Validates: Requirements 24.2**
 

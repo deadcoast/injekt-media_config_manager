@@ -1,0 +1,4 @@
+# file: C:\Users\ryanf\github\00\video-configs-5000\injekt\cli\app.py
+# hypothesis_version: 6.148.2
+
+['--dry-run', '--format', '--player', '--verbose', '--version', '-f', '-n', '-p', '-v', '.injekt', '__main__', 'assets', 'backup_manager', 'backups', 'injekt', 'input_handler', 'installer', 'list', 'output_formatter', 'package_repository', 'path_resolver', 'profile', 'profile_manager', 'state.json', 'switch', 'text']
