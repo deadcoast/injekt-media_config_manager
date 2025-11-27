@@ -1,0 +1,4 @@
+# file: C:\Users\ryanf\github\00\video-configs-5000\injekt\cli\interactive.py
+# hypothesis_version: 6.148.2
+
+[' Interactive Mode\n\n', 'Back to main menu', 'Enter package name', 'Enter profile name', 'Exit', 'Export cancelled', 'Export configuration', 'Generate report', 'Goodbye!', 'Import cancelled', 'Import configuration', 'Injekt CLI', 'Install package', 'List packages', 'List profiles', 'Manage profiles', 'Proceed with export?', 'Proceed with import?', 'Return to main menu?', 'Show package info', 'Switch profile', 'Uninstall package', 'Update package', 'Verify installation', 'Welcome to ', 'bold', 'bold cyan', 'cyan', 'export', 'import', 'info', 'install', 'list', 'profile_list', 'profile_switch', 'report', 'rollback', 'uninstall', 'update', 'verify']

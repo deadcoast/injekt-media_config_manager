@@ -31,6 +31,7 @@ from injekt.cli.commands import (
     ExportCommand,
     ImportCommand
 )
+from injekt.cli.interactive import InteractiveMode
 
 # Create the main Typer app
 app = typer.Typer(
@@ -368,6 +369,88 @@ def profile_switch(
     )
     
     exit_code = command.execute(profile_name)
+    raise typer.Exit(exit_code)
+
+
+@app.command()
+def interactive():
+    """Start interactive mode with step-by-step wizards."""
+    deps = get_dependencies()
+    
+    # Create all command instances
+    commands = {
+        "list": ListCommand(
+            package_repository=deps["package_repository"],
+            output_formatter=deps["output_formatter"]
+        ),
+        "install": InstallCommand(
+            package_repository=deps["package_repository"],
+            installer=deps["installer"],
+            path_resolver=deps["path_resolver"],
+            output_formatter=deps["output_formatter"],
+            input_handler=deps["input_handler"],
+            dry_run=state.dry_run
+        ),
+        "verify": VerifyCommand(
+            package_repository=deps["package_repository"],
+            installer=deps["installer"],
+            output_formatter=deps["output_formatter"]
+        ),
+        "rollback": RollbackCommand(
+            backup_manager=deps["backup_manager"],
+            output_formatter=deps["output_formatter"],
+            input_handler=deps["input_handler"]
+        ),
+        "uninstall": UninstallCommand(
+            installer=deps["installer"],
+            output_formatter=deps["output_formatter"],
+            input_handler=deps["input_handler"],
+            dry_run=state.dry_run
+        ),
+        "info": InfoCommand(
+            package_repository=deps["package_repository"],
+            output_formatter=deps["output_formatter"]
+        ),
+        "report": ReportCommand(
+            package_repository=deps["package_repository"],
+            output_formatter=deps["output_formatter"]
+        ),
+        "profile_list": ProfileListCommand(
+            profile_manager=deps["profile_manager"],
+            output_formatter=deps["output_formatter"]
+        ),
+        "profile_switch": ProfileSwitchCommand(
+            profile_manager=deps["profile_manager"],
+            output_formatter=deps["output_formatter"],
+            input_handler=deps["input_handler"]
+        ),
+        "update": UpdateCommand(
+            package_repository=deps["package_repository"],
+            installer=deps["installer"],
+            output_formatter=deps["output_formatter"],
+            input_handler=deps["input_handler"],
+            dry_run=state.dry_run
+        ),
+        "export": ExportCommand(
+            package_repository=deps["package_repository"],
+            output_formatter=deps["output_formatter"],
+            input_handler=deps["input_handler"]
+        ),
+        "import": ImportCommand(
+            package_repository=deps["package_repository"],
+            output_formatter=deps["output_formatter"],
+            input_handler=deps["input_handler"]
+        )
+    }
+    
+    # Create and run interactive mode
+    interactive_mode = InteractiveMode(
+        input_handler=deps["input_handler"],
+        output_formatter=deps["output_formatter"],
+        commands=commands
+    )
+    
+    exit_code = interactive_mode.run()
     raise typer.Exit(exit_code)
 
 
