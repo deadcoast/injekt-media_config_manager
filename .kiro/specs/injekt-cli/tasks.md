@@ -673,13 +673,19 @@
 
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 15. Create entry point and packaging
+- [x] 15. Create entry point and packaging
+
+
+
+
   - Create __main__.py entry point
   - Configure pyproject.toml for packaging
   - Test CLI installation
   - _Requirements: All requirements_
 
-- [ ] 15.1 Create entry point
+- [x] 15.1 Create entry point
+
+
   - Create __main__.py that calls app()
   - Configure console_scripts in pyproject.toml
   - Test running with `python -m injekt`
