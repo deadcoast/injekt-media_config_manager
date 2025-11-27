@@ -207,7 +207,9 @@
 
   - **Validates: Requirements 6.2**
 
-- [-] 4.5 Implement installer
+- [x] 4.5 Implement installer
+
+
 
 
   - Create Installer class

@@ -305,19 +305,43 @@ class Installer(InstallerInterface):
             target_dir: Target installation directory
             
         Returns:
-            List of conflicting file paths
+            List of conflicting file paths (only files from other packages)
         """
         conflicts = []
+        
+        # Get current installation state
+        state_result = self.config_parser.parse_installation_state(self.state_file)
+        installed_files_by_package = {}
+        
+        if isinstance(state_result, Success):
+            for installation in state_result.value:
+                installed_files_by_package[installation.package.name] = set(
+                    str(f) for f in installation.installed_files
+                )
         
         for package_file in package.files:
             dest_path = target_dir / package_file.target_path
             
             # Check if file already exists
             if dest_path.exists():
+                # Check if it's from the same package (reinstall/update)
+                if package.name in installed_files_by_package:
+                    if str(dest_path) in installed_files_by_package[package.name]:
+                        # File is from the same package, not a conflict
+                        continue
+                
                 # Check if it's from a different package
-                # For now, we'll consider any existing file a conflict
-                # In a real implementation, we'd check the installation state
-                conflicts.append(dest_path)
+                is_from_other_package = False
+                for pkg_name, files in installed_files_by_package.items():
+                    if pkg_name != package.name and str(dest_path) in files:
+                        is_from_other_package = True
+                        break
+                
+                if is_from_other_package:
+                    # File is from a different package, this is a TRUE conflict
+                    conflicts.append(dest_path)
+                # If file exists but not tracked by any package, we'll backup and overwrite
+                # This is not considered a conflict per Requirement 2.4
         
         return conflicts
     
