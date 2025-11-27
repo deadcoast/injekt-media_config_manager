@@ -17,28 +17,34 @@ A professional command-line tool for managing and installing optimized video med
 
 ## Installation
 
-### From Source
+### From Source (Recommended: UV)
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/deadcoast/injekt-media_config_manager.git
 cd injekt-cli
 
-# Install in development mode
-pip install -e .
+# Install with UV (recommended)
+uv pip install -e .
+
+# Or install with testing dependencies
+uv pip install -e ".[test]"
 ```
 
-### For Development
-
-Install with testing dependencies:
+### Alternative: Using pip
 
 ```bash
+# Install in development mode
+pip install -e .
+
+# Or with testing dependencies
 pip install -e ".[test]"
 ```
 
 ### Requirements
 
-- Python 3.8 or higher
+- Python 3.10 or higher
+- [UV](https://docs.astral.sh/uv/) (recommended) or pip
 - Windows (currently supported platform)
 - MPV or VLC media player installed
 
