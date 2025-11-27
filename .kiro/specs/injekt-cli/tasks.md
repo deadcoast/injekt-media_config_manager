@@ -346,14 +346,19 @@
   - Implement prompt_for_choice
   - _Requirements: 3.3, 13.2, 22.2_
 
-- [-] 7. Implement CLI commands
+- [x] 7. Implement CLI commands
+
+
+
 
 
   - Create command classes
   - Wire up Typer CLI application
   - _Requirements: All requirements_
 
-- [ ] 7.1 Implement list command
+- [x] 7.1 Implement list command
+
+
   - Create ListCommand class
   - Implement execute to list all packages
   - Display package name, description, player, version
@@ -361,7 +366,9 @@
   - Handle empty package list
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
 
-- [ ] 7.2 Implement install command
+- [x] 7.2 Implement install command
+
+
   - Create InstallCommand class
   - Implement execute with package validation
   - Implement path detection with user prompts
@@ -370,7 +377,9 @@
   - Display installation summary
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
 
-- [ ] 7.3 Implement verify command
+- [x] 7.3 Implement verify command
+
+
   - Create VerifyCommand class
   - Implement execute to check file existence
   - Check file permissions
@@ -378,11 +387,14 @@
   - Report issues with suggestions
   - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5_
 
-- [ ] 7.4 Write property test for installation verification
+- [x] 7.4 Write property test for installation verification
+
+
   - **Property 10: Installation verification completeness**
   - **Validates: Requirements 10.1, 10.2**
 
-- [ ] 7.5 Implement rollback command
+- [x] 7.5 Implement rollback command
+
   - Create RollbackCommand class
   - Implement execute to list backups
   - Prompt user to select backup
@@ -391,7 +403,8 @@
   - Display restored files
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ] 7.6 Implement uninstall command
+- [x] 7.6 Implement uninstall command
+
   - Create UninstallCommand class
   - Implement execute to remove package files
   - Create backup before uninstall
@@ -400,7 +413,8 @@
   - Display removed files
   - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5_
 
-- [ ] 7.7 Implement info command
+- [x] 7.7 Implement info command
+
   - Create InfoCommand class
   - Display package description and purpose
   - List all files in package
@@ -409,14 +423,16 @@
   - Show configuration options
   - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5_
 
-- [ ] 7.8 Implement profile commands
+- [x] 7.8 Implement profile commands
+
   - Create ProfileListCommand class
   - Create ProfileSwitchCommand class
   - Implement profile listing
   - Implement profile switching with backup
   - _Requirements: 9.1, 9.2, 9.3, 9.4_
 
-- [ ] 7.9 Implement report command
+- [x] 7.9 Implement report command
+
   - Create ReportCommand class
   - List all installed packages and versions
   - Include active configuration files
@@ -425,11 +441,14 @@
   - Support multiple output formats
   - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5_
 
-- [ ] 7.10 Write property test for report completeness
+- [x] 7.10 Write property test for report completeness
+
+
   - **Property 14: Report completeness**
   - **Validates: Requirements 15.1, 15.2, 15.3, 15.4**
 
-- [ ] 7.11 Implement update command
+- [x] 7.11 Implement update command
+
   - Create UpdateCommand class
   - Compare installed vs available versions
   - Display changes
@@ -438,11 +457,14 @@
   - Display update summary
   - _Requirements: 16.1, 16.2, 16.3, 16.4, 16.5_
 
-- [ ] 7.12 Write property test for update preserves customizations
+- [x] 7.12 Write property test for update preserves customizations
+
+
   - **Property 15: Update preserves customizations**
   - **Validates: Requirements 16.4**
 
-- [ ] 7.13 Implement export command
+- [x] 7.13 Implement export command
+
   - Create ExportCommand class
   - Copy all active config files
   - Include plugins and shaders
@@ -451,7 +473,8 @@
   - Display export location
   - _Requirements: 18.1, 18.2, 18.3, 18.4, 18.5_
 
-- [ ] 7.14 Implement import command
+- [x] 7.14 Implement import command
+
   - Create ImportCommand class
   - Accept directory path
   - Validate structure
@@ -460,7 +483,9 @@
   - Make package available
   - _Requirements: 17.1, 17.2, 17.3, 17.4, 17.5_
 
-- [ ] 7.15 Write property test for export-import round-trip
+- [x] 7.15 Write property test for export-import round-trip
+
+
   - **Property 16: Export-import round-trip**
   - **Validates: Requirements 18.1, 18.2**
 

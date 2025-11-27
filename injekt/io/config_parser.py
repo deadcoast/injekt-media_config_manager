@@ -147,7 +147,7 @@ class ConfigParser:
                 installation = InstallationState(
                     package=package,
                     target_dir=Path(install_data['target_dir']),
-                    backup_dir=Path(install_data['backup_dir']) if 'backup_dir' in install_data else None,
+                    backup_dir=Path(install_data['backup_dir']) if install_data.get('backup_dir') else None,
                     installed_files=[Path(f) for f in install_data['files']],
                     timestamp=datetime.fromisoformat(install_data['installed_at'])
                 )

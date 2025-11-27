@@ -1,0 +1,4 @@
+# file: C:\Users\ryanf\github\00\video-configs-5000\injekt\cli\output.py
+# hypothesis_version: 6.148.2
+
+['Available Packages', 'Description', 'Name', 'Player', 'Status', 'Version', 'bold', 'bold cyan', 'cyan', 'data', 'description', 'error', 'green', 'installed', 'json', 'magenta', 'message', 'name', 'packages', 'player', 'red', 'status', 'success', 'text', 'version', 'warning', 'yellow']
