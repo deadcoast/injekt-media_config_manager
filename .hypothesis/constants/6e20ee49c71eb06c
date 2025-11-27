@@ -1,0 +1,4 @@
+# file: C:\Users\ryanf\github\00\video-configs-5000\injekt\business\shader_installer.py
+# hypothesis_version: 6.148.2
+
+['"', '#', '#include', "'", '.comp', '.frag', '.glsl', '.hook', '.vert', ':', '<', '=', '>', 'glsl-shader', 'glsl-shaders-', 'glsl-shaders-append', 'glsl-shaders-set', 'shaders', 'utf-8']

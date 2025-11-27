@@ -220,52 +220,100 @@
   - Implement verify_installation
   - _Requirements: 2.1, 2.2, 2.5, 10.1, 11.1_
 
-- [ ] 4.6 Write property test for conflict detection
+- [x] 4.6 Write property test for conflict detection
+
+
+
+
+
   - **Property 12: Conflict detection**
   - **Validates: Requirements 13.1**
 
-- [ ] 4.7 Write property test for atomic installation
+- [x] 4.7 Write property test for atomic installation
+
+
+
+
+
   - **Property 20: Atomic installation**
   - **Validates: Requirements 5.3**
 
-- [ ] 4.8 Write property test for uninstall inverse
+- [x] 4.8 Write property test for uninstall inverse
+
+
+
+
+
   - **Property 11: Uninstall inverse**
   - **Validates: Requirements 11.1, 11.3**
 
-- [ ] 4.9 Implement plugin installer
+- [x] 4.9 Implement plugin installer
+
+
+
+
   - Create PluginInstaller class
   - Implement plugin path routing by file type
   - Implement plugin dependency resolution
   - Implement script-opts config file copying
   - _Requirements: 7.1, 7.2, 7.3_
 
-- [ ] 4.10 Write property test for plugin path routing
+- [x] 4.10 Write property test for plugin path routing
+
+
+
+
+
   - **Property 7: Plugin path routing**
   - **Validates: Requirements 7.1**
 
-- [ ] 4.11 Implement shader installer
+- [x] 4.11 Implement shader installer
+
+
+
+
   - Create ShaderInstaller class
   - Implement shader file copying to shaders/ directory
   - Implement shader reference validation
   - Implement shader dependency resolution
   - _Requirements: 8.1, 8.2, 8.3_
 
-- [ ] 4.12 Write property test for shader reference validation
+- [x] 4.12 Write property test for shader reference validation
+
+
+
+
+
   - **Property 8: Shader reference validation**
   - **Validates: Requirements 8.2**
 
-- [ ] 4.13 Implement profile manager
+- [x] 4.13 Implement profile manager
+
+
+
+
+
   - Create ProfileManager class
   - Implement list_profiles
   - Implement switch_profile with backup
   - Implement get_active_profile
   - _Requirements: 9.1, 9.2, 9.3, 9.4_
 
-- [ ] 4.14 Write property test for profile backup safety
+- [x] 4.14 Write property test for profile backup safety
+
+
+
+
+
   - **Property 9: Profile backup safety**
   - **Validates: Requirements 9.2**
 
-- [ ] 5. Checkpoint - Ensure all tests pass
+- [x] 5. Checkpoint - Ensure all tests pass
+
+
+
+
+
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 6. Implement CLI layer - output and input

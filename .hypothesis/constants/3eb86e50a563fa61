@@ -1,0 +1,4 @@
+# file: C:\Users\ryanf\github\00\video-configs-5000\injekt\business\plugin_installer.py
+# hypothesis_version: 6.148.2
+
+['"', "'", '\'"', '.js', '.lua', ';', 'from', 'import ', 'require', 'require(', 'require("', "require('", 'script-opts', 'scripts', 'utf-8']
